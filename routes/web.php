@@ -8,6 +8,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/series', [SeriesController::class, 'index']);
-Route::get('/series/create', [SeriesController::class, 'create']);
-Route::post('/series/store', [SeriesController::class, 'store']);
+Route::controller(SeriesController::class)
+        ->prefix('series')
+        ->group(function() {
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/store', 'store');
+            Route::post('/edit', 'edit');
+            Route::post('/update', 'update');
+            Route::post('/delete', 'delete');
+});

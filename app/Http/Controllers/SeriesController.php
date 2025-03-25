@@ -22,7 +22,7 @@ class SeriesController extends Controller
 
     public function store(Request $request)
     {
-        //
+        return "ehehe estou dentro da action store";
     }
 
     public function show(string $id)
