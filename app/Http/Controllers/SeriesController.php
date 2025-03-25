@@ -22,7 +22,15 @@ class SeriesController extends Controller
 
     public function store(Request $request)
     {
-        return "ehehe estou dentro da action store";
+        $request->validate([
+            'titulo' => 'required|min:3'
+        ], [
+            'titulo.required' => 'Preencha o campo abaixo',
+            'titulo.min' => 'Preencha com no mínimo 3 caracteres'
+        ]);
+
+        DB::table('series')->insert($request->only(['titulo']));
+        return redirect('/series');
     }
 
     public function show(string $id)
