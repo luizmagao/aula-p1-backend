@@ -10,6 +10,11 @@
 
 <body>
     <h1>Listando Series</h1>
+    <ul>
+        @foreach ($series as $serie)
+            <li>{{ $serie->titulo }}</li>
+        @endforeach
+    </ul>
 </body>
 
 </html>

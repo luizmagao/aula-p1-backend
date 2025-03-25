@@ -9,12 +9,10 @@ class SeriesController extends Controller
 {
     public function index()
     {
-        DB::insert(
-            'insert into series (id, titulo)
-            values (?, ?)',
-            [1, 'Dayle']
-        );
-        return view('series.index');
+        // DB::table('series')->insert(['titulo' => 'A menina que roubava livros']);
+        $series = DB::table('series')->get();
+
+        return view('series.index', compact('series'));
     }
 
     public function create()
