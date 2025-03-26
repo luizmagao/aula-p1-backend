@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Serie;
 use DB;
 
 class SeriesController extends Controller
@@ -38,9 +39,10 @@ class SeriesController extends Controller
         //
     }
 
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+        $serie = Serie::find($id);
+        return view('series.edit', compact('serie'));
     }
 
     public function update(Request $request, string $id)

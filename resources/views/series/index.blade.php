@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.default')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('title', 'Listando series')
 
-<body>
+@section('content')
     <h1>Listando Series</h1>
-    <a href="/series/create">Adicionar Serie</a>
-    <ul>
+    <a href="/series/create" class="btn btn-primary">Adicionar Serie</a>
+    <ul class="list-group mt-2">
         @foreach ($series as $serie)
-            <li>{{ $serie->titulo }}</li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ $serie->titulo }}
+                <button class="btn btn-warning btn-sm">E</button>
+            </li>
         @endforeach
     </ul>
-</body>
-
-</html>
+@endsection
