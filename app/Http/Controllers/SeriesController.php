@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Serie;
 use App\Http\Requests\StoreSeriesRequest;
+use App\Http\Requests\UpdateSeriesRequest;
 use DB;
 
 class SeriesController extends Controller
 {
     public function index()
     {
-        // DB::table('series')->insert(['titulo' => 'A menina que roubava livros']);
-        $series = DB::table('series')->get();
-
+        $series = Serie::orderBy('id', 'desc')->paginate();
         return view('series.index', compact('series'));
     }
 
@@ -39,7 +38,7 @@ class SeriesController extends Controller
         return view('series.edit', compact('serie'));
     }
 
-    public function update(StoreSeriesRequest $request, int $id)
+    public function update(UpdateSeriesRequest $request, int $id)
     {
        $serie = Serie::find($id);
        $serie->titulo = $request->titulo;

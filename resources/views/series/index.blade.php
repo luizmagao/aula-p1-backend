@@ -20,4 +20,6 @@
             </li>
         @endforeach
     </ul>
+
+    {{-- {{ $series->links() }} --}}
 @endsection
