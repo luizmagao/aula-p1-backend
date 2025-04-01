@@ -49,6 +49,6 @@ class SeriesController extends Controller
     {
         $serie = Serie::find($id);
         $serie->delete();
-        return redirect('/series');
+        return redirect('/s eries');
     }
 }
