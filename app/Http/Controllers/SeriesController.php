@@ -53,8 +53,10 @@ class SeriesController extends Controller
        return redirect('/series');
     }
 
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $serie = Serie::find($id);
+        $serie->delete();
+        return redirect('/series');
     }
 }

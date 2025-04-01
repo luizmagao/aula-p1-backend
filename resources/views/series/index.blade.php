@@ -9,7 +9,14 @@
         @foreach ($series as $serie)
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{ $serie->titulo }}
-                <a href="/series/{{ $serie->id }}/edit" class="btn btn-warning btn-sm">E</a>
+                <div class="d-flex gap-1">
+                    <a href="/series/{{ $serie->id }}/edit" class="btn btn-warning btn-sm">E</a>
+                    <form action="/series/{{ $serie->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-danger" type="submit">D</button>
+                    </form>
+                </div>
             </li>
         @endforeach
     </ul>
