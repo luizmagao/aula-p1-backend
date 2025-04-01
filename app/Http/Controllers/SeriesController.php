@@ -45,9 +45,12 @@ class SeriesController extends Controller
         return view('series.edit', compact('serie'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+       $serie = Serie::find($id);
+       $serie->titulo = $request->titulo;
+       $serie->save();
+       return redirect('/series');
     }
 
     public function destroy(string $id)

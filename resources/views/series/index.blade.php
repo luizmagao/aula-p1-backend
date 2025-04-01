@@ -9,7 +9,7 @@
         @foreach ($series as $serie)
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{ $serie->titulo }}
-                <button class="btn btn-warning btn-sm">E</button>
+                <a href="/series/{{ $serie->id }}/edit" class="btn btn-warning btn-sm">E</a>
             </li>
         @endforeach
     </ul>

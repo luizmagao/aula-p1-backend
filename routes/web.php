@@ -15,6 +15,6 @@ Route::controller(SeriesController::class)
             Route::get('/create', 'create');
             Route::post('/store', 'store');
             Route::get('/{id}/edit', 'edit');
-            Route::post('/update', 'update');
+            Route::put('/{id}', 'update');
             Route::post('/delete', 'delete');
 });

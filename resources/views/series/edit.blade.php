@@ -9,9 +9,10 @@
             @endforeach
         </ul>
     @endif
-    <form action="/series/update" method="post">
+    <form action="/series/{{ $serie->id }}" method="post">
+        @method('PUT')
         @csrf
         <input type="text" name="titulo" value="{{ $serie->titulo }}">
-        <button type="submit">Enviar</button>
+        <button type="submit">Editar</button>
     </form>
 @endsection
