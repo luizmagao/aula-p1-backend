@@ -10,8 +10,8 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{ $serie->titulo }}
                 <div class="d-flex gap-1">
-                    <a href="/series/{{ $serie->id }}/edit" class="btn btn-warning btn-sm">E</a>
-                    <form action="/series/{{ $serie->id }}" method="post">
+                    <a href="{{ route('series.edit', $serie->id) }}" class="btn btn-warning btn-sm">E</a>
+                    <form action="{{ route('series.destroy', $serie->id) }}" method="post">
                         @csrf
                         @method('delete')
                         <button class="btn btn-danger" type="submit">D</button>

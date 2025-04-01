@@ -23,18 +23,17 @@ class SeriesController extends Controller
 
     public function store(StoreSeriesRequest $request)
     {
-        DB::table('series')->insert($request->only(['titulo']));
+        Serie::create($request->only(['titulo']));
         return redirect('/series');
-    }
-
-    public function show(string $id)
-    {
-        //
     }
 
     public function edit(int $id)
     {
-        $serie = Serie::find($id);
+        try {
+            $serie = Serie::find($id);
+        } catch (\ExceptionDomain $e) {
+            return 'Ocorreu um erro';
+        }
         return view('series.edit', compact('serie'));
     }
 

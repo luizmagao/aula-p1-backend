@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Criando uma serie</h1>
-    <form action="/series/store" method="post">
+    <form action="{{ route('series.store') }}" method="post">
         @csrf
         <input class="form-control" type="text" name="titulo">
         <button class="btn btn-primary" type="submit">Enviar</button>
