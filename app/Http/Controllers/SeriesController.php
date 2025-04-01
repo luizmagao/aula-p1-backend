@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Serie;
+use App\Http\Requests\StoreSeriesRequest;
 use DB;
 
 class SeriesController extends Controller
@@ -21,15 +22,8 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreSeriesRequest $request)
     {
-        $request->validate([
-            'titulo' => 'required|min:3'
-        ], [
-            'titulo.required' => 'Preencha o campo abaixo',
-            'titulo.min' => 'Preencha com no mínimo 3 caracteres'
-        ]);
-
         DB::table('series')->insert($request->only(['titulo']));
         return redirect('/series');
     }
@@ -45,7 +39,7 @@ class SeriesController extends Controller
         return view('series.edit', compact('serie'));
     }
 
-    public function update(Request $request, int $id)
+    public function update(StoreSeriesRequest $request, int $id)
     {
        $serie = Serie::find($id);
        $serie->titulo = $request->titulo;
