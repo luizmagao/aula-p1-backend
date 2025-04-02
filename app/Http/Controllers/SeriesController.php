@@ -12,7 +12,8 @@ class SeriesController extends Controller
 {
     public function index()
     {
-        $series = Serie::orderBy('id', 'desc')->paginate();
+        $series = Serie::paginate();
+
         return view('series.index', compact('series'));
     }
 
@@ -49,6 +50,6 @@ class SeriesController extends Controller
     {
         $serie = Serie::find($id);
         $serie->delete();
-        return redirect('/s eries');
+        return redirect('/series');
     }
 }
